@@ -1,0 +1,8 @@
+<div class="form-wrrap">
+    <h3>User Login</h3>
+    <form [formGroup]="loginForm" (ngSubmit)="userLogin()">
+      <input type="email" placeholder="Enter Your Email" formControlName="email"/>
+      <input type="password" placeholder="Enter Your Password" formControlName="password" />
+      <input type="submit" value="Login" [disabled]="!loginForm.valid" />
+    </form>
+  </div>

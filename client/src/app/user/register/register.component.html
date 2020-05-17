@@ -1,0 +1,11 @@
+<div class="form-wrrap">
+    <h3>User Register</h3>
+    <form [formGroup]="registerForm" (ngSubmit)="userRegister()">
+      <input type="text" placeholder="Enter Your Name" formControlName="name" />
+      <input type="email" placeholder="Enter Your Email" formControlName="email" />
+      <input type="Date"  formControlName="dob" />
+      <input type="number" placeholder="Phone Number" formControlName="phone" />
+      <input type="password" placeholder="Enter Your Password" formControlName="password" />
+      <input type="submit" value="Register" [disabled]="!registerForm.valid" />
+    </form>
+  </div>

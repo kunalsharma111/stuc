@@ -1,0 +1,8 @@
+<button (click)="userService.logout()">logout</button>
+<ul class="listings"  *ngIf="list$ | async as list">
+    <li *ngFor="let listt of list">
+        {{listt.name}}
+        {{listt.email}}
+        <a [routerLink]="listt._id">view details</a>
+    </li>
+</ul>
