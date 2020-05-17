@@ -22,7 +22,9 @@ router.post("/register", async  (req,res) => {
         email: req.body.email,
         dob: req.body.dob,
         phone: req.body.phone,
-        password: hashedPassword
+        password: hashedPassword,
+        registerdate : req.body.registerdate,
+        type: req.body.type
     });
     try{
         const savedUser = await  user.save();
@@ -43,9 +45,11 @@ router.post("/login", async (req,res)=>{
     const validPass = await bcrypt.compare(req.body.password,user.password);
     if(!validPass) return res.status(400).send("Password Incorrect");
 
+    
+    
     // create and assign a token
     const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
-    res.header("auth-token",token).send({token:token});
+    res.header("auth-token",token).send({token:token,role:user.type});
 });
 
 

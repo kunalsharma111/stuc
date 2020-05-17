@@ -4,4 +4,6 @@ export interface Listofusers {
     dob:Date;
     phone:Number;
     password:String;
+    registerdate: Date;
+    type: String;
 }

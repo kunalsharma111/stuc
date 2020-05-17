@@ -10,7 +10,15 @@ import { UserService } from 'src/app/user/service/user.service';
   styleUrls: ['./allusers.component.scss']
 })
 export class AllusersComponent implements OnInit {
-
+  s:boolean=false;
+  tog(){
+    if(this.s==false){
+      this.s =  true;
+    }
+    else{
+      this.s = false;
+    }
+  }
   list$ : Observable<Listofusers[]>;
   
   constructor(private listofusersService : ListofusersService, public userService: UserService) { }
