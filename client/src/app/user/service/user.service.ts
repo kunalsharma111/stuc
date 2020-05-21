@@ -20,6 +20,7 @@ export class UserService {
   logout(){
     localStorage.removeItem("token");
     this.router.navigate(["/"]);
+    window.location.reload();
   }
 
   loggedIn(){
