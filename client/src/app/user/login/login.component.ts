@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
     phone: new FormControl("",[Validators.required]),
     password: new FormControl("",[Validators.required]),
     registerdate: new FormControl(this.todaysdate),
-    type: new FormControl("User")
+    type: new FormControl("School")
   })
   loginForm = new FormGroup({
     email: new FormControl("", [Validators.required]),
@@ -82,7 +82,7 @@ window.addEventListener("load", mainF);
         else{
           localStorage.setItem("token",res.token);
           this.loginForm.reset();
-          this.router.navigate(["/listofusers"]);    
+          this.router.navigate(["/school"]);    
         }
       },
       err => {

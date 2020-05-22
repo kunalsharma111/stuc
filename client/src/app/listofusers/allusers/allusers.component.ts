@@ -36,18 +36,9 @@ export class AllusersComponent implements OnInit {
   ngOnInit(): void {
     this.list$ = this.listofusersService.getUsers();
     $(document).ready(function() {
-      $('#sidebarCollapse').on('click', function() {
-        $('#sidebar').toggleClass('active');
-        $('#im').toggleClass('pk');
-      });
-      $(window).on('load resize', function() {
-        $('#sidebar').toggleClass('active', $(window).width() < 1080);
-        
-      });
-      $('#sidebarOpen').on('click', function() {
-        $('#sidebar').toggleClass();
-        $('#im').toggleClass('pkk');
-      });
+      $(".hamburger .hamburger__inner").click(function(){
+        $(".wrapper").toggleClass("active")
+      })
     });
      
   }

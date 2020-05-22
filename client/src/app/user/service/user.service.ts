@@ -27,5 +27,11 @@ export class UserService {
     return !!localStorage.getItem("token");
   }
 
+  checktype(){
+    // return this.http.get<any>(`${this.ROOT_URL}/cur`).subscribe(res=>{
+    //   console.log(res)
+      return true;
+    // });
+  }
 
 }

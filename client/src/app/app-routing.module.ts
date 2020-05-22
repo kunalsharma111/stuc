@@ -14,6 +14,11 @@ const routes: Routes = [
     import("./listofusers/listofusers.module").then(m => m.ListofusersModule)
   },
   {
+    path:"school",
+    loadChildren: () =>
+    import("./schooldash/schooldash.module").then(m => m.SchooldashModule)
+  },
+  {
     path:"user",
     loadChildren:() =>
     import("./user/user.module").then(m => m.UserModule)

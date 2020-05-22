@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Listofusers } from '../model/listofusers';
 import { Subscription } from 'rxjs';
 import { UserService } from 'src/app/user/service/user.service';
-
+import * as $ from 'jquery';
 @Component({
   selector: 'app-user-details',
   templateUrl: './user-details.component.html',
@@ -25,6 +25,11 @@ export class UserDetailsComponent implements OnInit, OnDestroy {
     .getUser(this.id)
     .subscribe(listofusers =>{
       this.listofusers = listofusers;
+    });
+    $(document).ready(function() {
+      $(".hamburger .hamburger__inner").click(function(){
+        $(".wrapper").toggleClass("active")
+      })
     });
   }
 

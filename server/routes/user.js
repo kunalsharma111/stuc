@@ -53,6 +53,7 @@ router.post("/login", async (req,res)=>{
 });
 
 
+
 // get all the registered users
 router.get("/getusers",verify,async (req,res) =>{
     try{
@@ -73,5 +74,11 @@ router.get("/getusers/:userId",verify, async (req, res) => {
       res.json({ message: error });
     }
   });
+
+//   get current user
+  router.get('/cur',  (req, res) => {
+   
+})
+
 
 module.exports = router;

@@ -43,13 +43,13 @@
                 <li>
                   <a [routerLink]="['/listofusers']" class="active">
                     <span class="icon"><i class="fa fa-home" aria-hidden="true"></i></span>
-                    <span class="title">Dashboarddddddd</span>
+                    <span class="title">Dashboard</span>
                   </a>
                 </li>
                 <li>
                   <a [routerLink]="['/listofusers/list']">
                     <span class="icon"><i class="fa fa-book" aria-hidden="true"></i></span>
-                    <span class="title">schools</span>
+                    <span class="title">Admins</span>
                   </a>
                 </li>
                 <li>
@@ -77,16 +77,15 @@
             </div>
         </div>
         <div class="container">
-            <h1>fffffffffffff</h1>
-            <div class="info-wrap">
-                <h5>{{listofusers.name}}</h5>
-                <h4>{{listofusers.email}}</h4>
-                <p>{{listofusers.dob}}</p>
-                <p>{{listofusers.phone}}</p>
-                <p>{{listofusers.registerdate}}</p>
-                <p>{{listofusers.type}}</p>
-            </div>
-     
+            
+          <form class="form" [formGroup]="registerForm" (ngSubmit)="userRegister()">
+            <input  type="text" placeholder="Enter Your Name" formControlName="name" />
+            <input  type="email" placeholder="Enter Your Email" formControlName="email" />
+            <input  type="Date"  formControlName="dob" />
+            <input  type="number" placeholder="Phone Number" formControlName="phone" />
+            <input type="password" placeholder="Enter Your Password" formControlName="password" />
+            <input  type="submit" value="Register" [disabled]="!registerForm.valid" />
+          </form>
          
         </div>
     </div>
