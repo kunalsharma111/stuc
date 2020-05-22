@@ -41,7 +41,7 @@
               </div>
               <ul>
                 <li>
-                  <a [routerLink]="['/listofusers']">
+                  <a [routerLink]="['/listofusers']" >
                     <span class="icon"><i class="fa fa-home" aria-hidden="true"></i></span>
                     <span class="title">Dashboard</span>
                   </a>
@@ -77,17 +77,35 @@
             </div>
         </div>
         <div class="container">
-            <h1>fffffffffffff</h1>
-            <div class="info-wrap">
-                <h5>{{listofusers.name}}</h5>
-                <h4>{{listofusers.email}}</h4>
-                <p>{{listofusers.dob}}</p>
-                <p>{{listofusers.phone}}</p>
-                <p>{{listofusers.registerdate}}</p>
-                <p>{{listofusers.type}}</p>
-                <p>{{listofusers.status}}</p>
+          <button (click)="tog()">All Schools</button>
+          <div *ngIf="s">
+          <div   *ngIf="list$ | async as list">
+          <table class="rwd-table">
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>User Type</th>
+                <th>Status</th>
+                <th>Edit</th>
+              </tr>
+              <tr *ngFor="let listt of list">
+                <td *ngIf="listt.type == 'School'">{{listt.name}}</td>
+                <td *ngIf="listt.type == 'School'">{{listt.email}}</td>
+                <td *ngIf="listt.type == 'School'">{{listt.type}}</td>
+                <td *ngIf="listt.type == 'School'">{{list.status}} </td>
+                <td *ngIf="listt.type == 'School'"><a [routerLink]="listt._id">view detail</a></td>
+              </tr>
+            </table>
             </div>
-     
+            </div>
+          <form class="form" [formGroup]="registerForm" (ngSubmit)="userRegister()">
+            <input  type="text" placeholder="Enter Your Name" formControlName="name" />
+            <input  type="email" placeholder="Enter Your Email" formControlName="email" />
+            <input  type="Date"  formControlName="dob" />
+            <input  type="number" placeholder="Phone Number" formControlName="phone" />
+            <input type="password" placeholder="Enter Your Password" formControlName="password" />
+            <input  type="submit" value="Register" [disabled]="!registerForm.valid" />
+          </form>
          
         </div>
     </div>

@@ -4,6 +4,7 @@ import { AllusersComponent } from './allusers/allusers.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { AuthGuard } from '../user/guard/auth.guard';
 import { AdminlistComponent } from './adminlist/adminlist.component';
+import { SchoollistComponent } from './schoollist/schoollist.component';
 
 
 const routes: Routes = [
@@ -13,12 +14,22 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: "list",
+    path: "admins",
     component: AdminlistComponent,
     canActivate: [AuthGuard]
   },
   {
-    path: ":id",
+    path: "schools",
+    component: SchoollistComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: "schools/:id",
+    component: UserDetailsComponent,
+    canActivate: [AuthGuard]  
+  },
+  {
+    path: "admins/:id",
     component: UserDetailsComponent,
     canActivate: [AuthGuard]  
   }

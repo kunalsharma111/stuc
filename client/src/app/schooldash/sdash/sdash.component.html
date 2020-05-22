@@ -78,7 +78,42 @@
           </div>
       </div>
       <div class="container">
-        <!-- <button (click)="userService.logout()"><i class="fa fa-home" aria-hidden="true"></i>logout</button> -->
+        <div class="pricingTable" *ngIf="new">
+          <h2 class="pricingTable-title">Find a plan that's right for you.</h2>
+          <h3 class="pricingTable-subtitle">Try First then Buy with our free plan</h3>
+          <ul class="pricingTable-firstTable">
+            <li class="pricingTable-firstTable_table">
+              <h1 class="pricingTable-firstTable_table__header">Free Plan</h1>
+              <p class="pricingTable-firstTable_table__pricing"><span>$</span><span>0</span><span>7 Days</span></p>
+              <ul class="pricingTable-firstTable_table__options">
+                <li>2 Teacher Account</li>
+                <li>20 Students Account</li>
+                <li>3 Hours Live Class</li>
+              </ul>
+              <div class="pricingTable-firstTable_table__getstart">Get Started Now</div>
+            </li><li class="pricingTable-firstTable_table">
+              <h1 class="pricingTable-firstTable_table__header">Gold Packege</h1>
+              <p class="pricingTable-firstTable_table__pricing"><span>$</span><span>199</span><span>Month</span></p>
+              <ul class="pricingTable-firstTable_table__options">
+                <li>10 Teacher Account</li>
+                <li>400 Student Accounts</li>
+                <li>Unlimites no. of hours</li>
+                <li>24/7 Support Service</li>
+              </ul>
+              <div class="pricingTable-firstTable_table__getstart">Get Started Now</div>
+            </li><li class="pricingTable-firstTable_table">
+              <h1 class="pricingTable-firstTable_table__header">Premium Packege</h1>
+              <p class="pricingTable-firstTable_table__pricing"><span>$</span><span>499</span><span>Month</span></p>
+              <ul class="pricingTable-firstTable_table__options">
+                <li>50 Teacher Accounts</li>
+                <li>2000 Student Accounts</li>
+                <li>Unlimites no. of hours</li>
+                <li>24/7 Support Service</li>
+              </ul>
+              <div class="pricingTable-firstTable_table__getstart">Get Started Now</div>
+            </li>
+          </ul>
+        </div>
       </div>
   </div>
   

@@ -1,18 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import * as $ from 'jquery';
-import { ListofusersService } from '../service/listofusers.service';
-import { UserService } from 'src/app/user/service/user.service';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Listofusers } from '../model/listofusers';
+import { ListofusersService } from '../service/listofusers.service';
+import { Router } from '@angular/router';
+import { UserService } from 'src/app/user/service/user.service';
 @Component({
-  selector: 'app-adminlist',
-  templateUrl: './adminlist.component.html',
-  styleUrls: ['./adminlist.component.scss']
+  selector: 'app-schoollist',
+  templateUrl: './schoollist.component.html',
+  styleUrls: ['./schoollist.component.scss']
 })
-export class AdminlistComponent implements OnInit {
-
+export class SchoollistComponent implements OnInit {
   todaysdate = new Date();
   registerForm = new FormGroup({
     name: new FormControl("",[Validators.required]),
@@ -21,11 +20,10 @@ export class AdminlistComponent implements OnInit {
     phone: new FormControl("",[Validators.required]),
     password: new FormControl("",[Validators.required]),
     registerdate: new FormControl(this.todaysdate),
-    type: new FormControl("Admin"),
-    status: new FormControl("Active")
+    type: new FormControl("School"),
+    status: new FormControl("Inactive")
   })
   s:boolean=false;
-  s2:boolean=false; 
   tog(){
     if(this.s==false){
       this.s =  true;
@@ -36,7 +34,6 @@ export class AdminlistComponent implements OnInit {
   }
 
   list$ : Observable<Listofusers[]>;
-
   constructor(private listofusersService : ListofusersService, private router : Router, public userService: UserService) { }
 
   ngOnInit(): void {
@@ -55,4 +52,5 @@ export class AdminlistComponent implements OnInit {
       });
     }
   }
+
 }

@@ -7,7 +7,8 @@ const userSchema = new mongoose.Schema({
     phone: Number,
     password: String,
     registerdate : Date,
-    type: String
+    type: String,
+    status: String
 });
 
 module.exports = mongoose.model("User",userSchema);

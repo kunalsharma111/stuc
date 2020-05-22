@@ -41,21 +41,21 @@
               </div>
               <ul>
                 <li>
-                  <a [routerLink]="['/listofusers']" class="active">
+                  <a [routerLink]="['/listofusers']" >
                     <span class="icon"><i class="fa fa-home" aria-hidden="true"></i></span>
                     <span class="title">Dashboard</span>
                   </a>
                 </li>
                 <li>
-                  <a [routerLink]="['/listofusers/list']">
+                  <a [routerLink]="['/listofusers/admins']">
                     <span class="icon"><i class="fa fa-book" aria-hidden="true"></i></span>
                     <span class="title">Admins</span>
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a [routerLink]="['/listofusers/schools']">
                     <span class="icon"><i class="fa fa-graduation-cap" aria-hidden="true"></i></span>
-                    <span class="title">Schools stats</span>
+                    <span class="title">Schools</span>
                   </a>
                 </li>
                 <li>
@@ -77,7 +77,25 @@
             </div>
         </div>
         <div class="container">
-            
+          <button (click)="tog()">All Admins</button>
+          <div *ngIf="s">
+          <div   *ngIf="list$ | async as list">
+          <table class="rwd-table">
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>User Type</th>
+                <th>Edit</th>
+              </tr>
+              <tr *ngFor="let listt of list">
+                <td *ngIf="listt.type == 'Admin'">{{listt.name}}</td>
+                <td *ngIf="listt.type == 'Admin'">{{listt.email}}</td>
+                <td *ngIf="listt.type == 'Admin'">{{listt.type}}</td>
+                <td *ngIf="listt.type == 'Admin'"><a [routerLink]="listt._id">view detail</a></td>
+              </tr>
+            </table>
+            </div>
+            </div>
           <form class="form" [formGroup]="registerForm" (ngSubmit)="userRegister()">
             <input  type="text" placeholder="Enter Your Name" formControlName="name" />
             <input  type="email" placeholder="Enter Your Email" formControlName="email" />

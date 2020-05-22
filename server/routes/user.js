@@ -24,7 +24,8 @@ router.post("/register", async  (req,res) => {
         phone: req.body.phone,
         password: hashedPassword,
         registerdate : req.body.registerdate,
-        type: req.body.type
+        type: req.body.type,
+        status: req.body.status
     });
     try{
         const savedUser = await  user.save();
@@ -49,7 +50,7 @@ router.post("/login", async (req,res)=>{
     
     // create and assign a token
     const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
-    res.header("auth-token",token).send({token:token,role:user.type});
+    res.header("auth-token",token).send({token:token,role:user.type,status:user.status});
 });
 
 

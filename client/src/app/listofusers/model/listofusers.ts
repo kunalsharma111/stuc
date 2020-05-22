@@ -6,4 +6,5 @@ export interface Listofusers {
     password:String;
     registerdate: Date;
     type: String;
+    status: String;
 }
