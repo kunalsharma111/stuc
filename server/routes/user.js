@@ -35,7 +35,7 @@ router.post("/register", async  (req,res) => {
     }
 });
 
-
+let sub;
 // user login
 router.post("/login", async (req,res)=>{
     // checking user email in db
@@ -51,6 +51,7 @@ router.post("/login", async (req,res)=>{
     // create and assign a token
     const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
     res.header("auth-token",token).send({token:token,role:user.type,status:user.status});
+    sub = user._id;
 });
 
 
@@ -77,9 +78,15 @@ router.get("/getusers/:userId",verify, async (req, res) => {
   });
 
 //   get current user
-  router.get('/cur',  (req, res) => {
-   
+  router.get('/cur',async  (req, res) => {
+   try{
+    const user = await User.findOne(sub);
+    res.json(user);
+   }catch(error){
+       res.json({message:error});
+   }
 })
+
 
 
 module.exports = router;

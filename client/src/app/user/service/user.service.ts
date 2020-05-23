@@ -28,10 +28,7 @@ export class UserService {
   }
 
   checktype(){
-    // return this.http.get<any>(`${this.ROOT_URL}/cur`).subscribe(res=>{
-    //   console.log(res)
-      return true;
-    // });
+    return this.http.get<any>(`${this.ROOT_URL}/cur`);
   }
 
 }

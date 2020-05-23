@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { SdashComponent } from './sdash/sdash.component';
 import { AuthGuard } from '../user/guard/auth.guard';
+import { SchoolguardGuard } from '../user/guard/schoolguard.guard';
 
 const routes: Routes = [
   {

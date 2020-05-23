@@ -18,5 +18,8 @@ export class SdashComponent implements OnInit {
       
     });
   }
+  buyp1(){
+    console.log("yes");
+  }
 
 }

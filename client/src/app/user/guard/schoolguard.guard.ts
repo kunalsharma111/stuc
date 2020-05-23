@@ -6,26 +6,25 @@ import { UserService } from '../service/user.service';
 @Injectable({
   providedIn: 'root'
 })
-export class TypeGuard implements CanActivate {
-  anss : boolean;
+export class SchoolguardGuard implements CanActivate {
+  ans : boolean;
   constructor(private userService: UserService ,private router:Router){
     this.userService.checktype().subscribe(res =>{
-      if(res.type == 'Admin'){
-        this.anss = true;
+      if(res.type == 'School' || res.type == 'User' || res.type == 'user'){
+        this.ans = true;
       }
       else{
-        this.anss = false;
+        this.ans = false;
       }
     },err =>{
       console.log(err);
     })
   }
-  
-  canActivate():  boolean  {
-    if(this.anss ==  true){
+  canActivate():boolean{
+    if(this.userService.loggedIn() && this.ans == true){
       return true;
     } else{
-      this.userService.logout();
+      this.router.navigate(["user/login"]);
       return false;
     }
   }

@@ -7,7 +7,19 @@ import { UserService } from '../service/user.service';
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
-  constructor(private userService: UserService,private router:Router){}
+  anss : boolean;
+  constructor(private userService: UserService,private router:Router){
+    this.userService.checktype().subscribe(res =>{
+      if(res.type == 'Admin'){
+        this.anss = true;
+      }
+      else{
+        this.anss = false;
+      }
+    },err =>{
+      console.log(err);
+    })
+  }
   canActivate():boolean{
     if(this.userService.loggedIn()){
       return true;

@@ -5,11 +5,17 @@ import { UserDetailsComponent } from './user-details/user-details.component';
 import { AuthGuard } from '../user/guard/auth.guard';
 import { AdminlistComponent } from './adminlist/adminlist.component';
 import { SchoollistComponent } from './schoollist/schoollist.component';
+import { TypeGuard } from '../user/guard/type.guard';
 
 
 const routes: Routes = [
   {
     path: "",
+    component: AllusersComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: "admindash",
     component: AllusersComponent,
     canActivate: [AuthGuard]
   },

@@ -3,7 +3,7 @@ const app = express();
 const dotenv = require("dotenv");
 var mongoose = require("mongoose"); 
 const cors = require("cors");
-
+var nodemailer = require("nodemailer");
 dotenv.config();
 var url = process.env.DB_CONNECT;
 
