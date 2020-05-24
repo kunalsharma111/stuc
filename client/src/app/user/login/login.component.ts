@@ -18,7 +18,8 @@ export class LoginComponent implements OnInit {
     password: new FormControl("",[Validators.required]),
     registerdate: new FormControl(this.todaysdate),
     type: new FormControl("School"),
-    status: new FormControl("Inactive")
+    status: new FormControl("Inactive"),
+    coupon: new FormControl("")
   })
   loginForm = new FormGroup({
     email: new FormControl("", [Validators.required]),

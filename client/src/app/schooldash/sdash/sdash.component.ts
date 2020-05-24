@@ -18,8 +18,11 @@ export class SdashComponent implements OnInit {
       
     });
   }
+
   buyp1(){
-    console.log("yes");
+    // this.userService.sendmail();
+    console.log("step 1");
+    this.userService.couponcode();
   }
 
 }

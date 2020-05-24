@@ -7,4 +7,5 @@ export interface Listofusers {
     registerdate: Date;
     type: String;
     status: String;
+    coupon: String;
 }

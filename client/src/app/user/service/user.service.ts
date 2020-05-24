@@ -31,4 +31,23 @@ export class UserService {
     return this.http.get<any>(`${this.ROOT_URL}/cur`);
   }
 
+  sendmail(){
+    return this.http.get<any>(`${this.ROOT_URL}/sendmail`).subscribe(
+      res =>{
+      },err =>{
+        console.log(err);
+      }
+    )
+  }
+
+  couponcode(){
+    console.log("step 2");
+    return this.http.get<any>(`${this.ROOT_URL}/updatecoupon`).subscribe(
+      res =>{
+      },err =>{
+        console.log(err);
+      }
+    )
+  }
+
 }

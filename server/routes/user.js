@@ -3,6 +3,7 @@ const User = require("../model/User");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const verify = require("../routes/verifyToken");
+var nodemailer = require("nodemailer");
 
 //register 
 router.post("/register", async  (req,res) => {
@@ -25,7 +26,8 @@ router.post("/register", async  (req,res) => {
         password: hashedPassword,
         registerdate : req.body.registerdate,
         type: req.body.type,
-        status: req.body.status
+        status: req.body.status,
+        coupon: req.body.coupon
     });
     try{
         const savedUser = await  user.save();
@@ -86,6 +88,52 @@ router.get("/getusers/:userId",verify, async (req, res) => {
        res.json({message:error});
    }
 })
+
+
+
+
+let mailTransporter = nodemailer.createTransport({ 
+    service: 'gmail', 
+    auth: { 
+        user: 'famemedia315@gmail.com', 
+        pass: 'famemedia123@'
+    } 
+}); 
+  
+let mailDetails = { 
+    from: 'famemedia315@gmail.com', 
+    to: 'sharmakunal315@gmail.com', 
+    subject: 'Confirm OTP For Stuc', 
+    text: 'Node.js testing mail for GeeksforGeeks'
+}; 
+
+//send mail
+router.get('/sendmail', async (req, res) => {
+		console.log('sending email..');
+        mailTransporter.sendMail(mailDetails, function(err, data) { 
+            if(err) { 
+                console.log('Error Occurs'); 
+            } else { 
+                console.log('Email sent successfully'); 
+            } 
+        }); 
+});
+
+
+router.get('/updatecoupon', async (req, res) => {
+    console.log("step 3");
+    console.log('update coupon code');
+    try{
+        const user = await User.findByIdAndUpdate(sub,req.body,{"coupon":"12345"},(err,doc)=>{
+            if(!err){
+                console.log(doc);
+                res.json('saved to DB');
+            }
+        });
+    }catch(error){
+        res.json({message:error});
+    } 
+});
 
 
 

@@ -24,4 +24,30 @@ mongoose.connect(url,{ useNewUrlParser: true , useUnifiedTopology:true}, functio
 });
 
 // express server
-app.listen(4000, () => console.log("server up and running on port 4000"))
+app.listen(4000, () => console.log("server up and running on port 4000"));
+
+
+let transport = nodemailer.createTransport({
+     service: 'gmail',
+     auth: {
+        user: 'famemedia315@gmail.com',
+        pass: 'famemedia123@'
+     }
+ });
+ let mailDetails = { 
+     from: 'famemedia315@gmail.com', 
+     to: 'sharmakunal315@gmail.com', 
+     subject: 'Test mail', 
+     text: 'Node.js testing mail for GeeksforGeeks'
+ }; 
+ //send mail
+ app.get('/sendmail', (req, res) => {
+     mailTransporter.sendMail(mailDetails, function(err, data) { 
+          if(err) { 
+              console.log('Error Occurs'); 
+          } else { 
+              console.log('Email sent successfully'); 
+          } 
+      }); 
+ });
+ 
