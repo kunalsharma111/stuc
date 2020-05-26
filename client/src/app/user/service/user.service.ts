@@ -30,7 +30,6 @@ export class UserService {
   checktype(){
     return this.http.get<any>(`${this.ROOT_URL}/cur`);
   }
-
   sendmail(){
     return this.http.get<any>(`${this.ROOT_URL}/sendmail`).subscribe(
       res =>{

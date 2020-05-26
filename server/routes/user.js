@@ -124,7 +124,8 @@ router.get('/updatecoupon', async (req, res) => {
     console.log("step 3");
     console.log('update coupon code');
     try{
-        const user = await User.findByIdAndUpdate(sub,req.body,{"coupon":"12345"},(err,doc)=>{
+         
+        const user = await User.updateIne({_id:"5ec63dec7ccc752888627b7c"},{$set:{coupon:123456}},(err,doc)=>{
             if(!err){
                 console.log(doc);
                 res.json('saved to DB');
