@@ -22,7 +22,12 @@ export class SdashComponent implements OnInit {
   buyp1(){
     // this.userService.sendmail();
     console.log("step 1");
-    this.userService.couponcode();
+    this.userService.checktype().subscribe(res =>{
+      const idd = JSON.stringify(res._id);
+      this.userService.couponcode(idd);
+    },err=>{
+      console.log(err);
+    })
   }
 
 }

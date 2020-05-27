@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const dotenv = require("dotenv");
 var mongoose = require("mongoose"); 
+var bodyParser = require('body-parser')
 const cors = require("cors");
 var nodemailer = require("nodemailer");
 dotenv.config();
@@ -11,6 +12,7 @@ var url = process.env.DB_CONNECT;
 const userRoutes = require("./routes/user");
 
 // Middlewares
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cors());
 

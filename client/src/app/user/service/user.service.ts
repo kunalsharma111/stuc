@@ -39,9 +39,10 @@ export class UserService {
     )
   }
 
-  couponcode(){
+  couponcode(idd){
+    let data = {id: idd};
     console.log("step 2");
-    return this.http.get<any>(`${this.ROOT_URL}/updatecoupon`).subscribe(
+    return this.http.post<any>(`${this.ROOT_URL}/updatecoupon`,{params: data}).subscribe(
       res =>{
       },err =>{
         console.log(err);

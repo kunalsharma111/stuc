@@ -74,7 +74,6 @@ router.get("/getusers/:userId",verify, async (req, res) => {
       const user = await User.findById(req.params.userId);
       res.json(user);
     } catch (error) {
-        console.log("ma hu kunal");
       res.json({ message: error });
     }
   });
@@ -120,12 +119,13 @@ router.get('/sendmail', async (req, res) => {
 });
 
 
-router.get('/updatecoupon', async (req, res) => {
+router.post('/updatecoupon', async (req, res) => {
+    console.log(req.body.params.id);
     console.log("step 3");
     console.log('update coupon code');
     try{
          
-        const user = await User.updateIne({_id:"5ec63dec7ccc752888627b7c"},{$set:{coupon:123456}},(err,doc)=>{
+        const user = await User.updateIne({_id:req.body.params.id},{$set:{coupon:123456}},(err,doc)=>{
             if(!err){
                 console.log(doc);
                 res.json('saved to DB');
