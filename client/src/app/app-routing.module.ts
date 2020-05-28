@@ -19,6 +19,11 @@ const routes: Routes = [
     import("./schooldash/schooldash.module").then(m => m.SchooldashModule)
   },
   {
+    path:"activeschool",
+    loadChildren: () =>
+    import("./schoolactive/schoolactive.module").then(m => m.SchoolactiveModule)
+  },
+  {
     path:"user",
     loadChildren:() =>
     import("./user/user.module").then(m => m.UserModule)

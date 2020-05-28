@@ -82,9 +82,16 @@ window.addEventListener("load", mainF);
         this.router.navigate(["/listofusers"]);
         }
         else{
-          localStorage.setItem("token",res.token);
-          this.loginForm.reset();
-          this.router.navigate(["/school"]);    
+          if(res.status == "Active"){
+            localStorage.setItem("token",res.token);
+            this.loginForm.reset();
+            this.router.navigate(["/activeschool"]);
+          }
+          else{
+            localStorage.setItem("token",res.token);
+            this.loginForm.reset();
+            this.router.navigate(["/school"]);  
+          }    
         }
       },
       err => {

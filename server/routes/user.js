@@ -91,24 +91,27 @@ router.get("/getusers/:userId",verify, async (req, res) => {
 
 
 
-let mailTransporter = nodemailer.createTransport({ 
-    service: 'gmail', 
-    auth: { 
-        user: 'famemedia315@gmail.com', 
-        pass: 'famemedia123@'
-    } 
-}); 
-  
-let mailDetails = { 
-    from: 'famemedia315@gmail.com', 
-    to: 'sharmakunal315@gmail.com', 
-    subject: 'Confirm OTP For Stuc', 
-    text: 'Node.js testing mail for GeeksforGeeks'
-}; 
+
 
 //send mail
-router.get('/sendmail', async (req, res) => {
-		console.log('sending email..');
+router.post('/sendmail', async (req, res) => {
+    console.log(req.body.params.email);
+    let mailTransporter = nodemailer.createTransport({ 
+        service: 'gmail', 
+        auth: { 
+            user: 'famemedia315@gmail.com', 
+            pass: 'famemedia123@'
+        } 
+    }); 
+      
+    let mailDetails = { 
+        from: 'famemedia315@gmail.com', 
+        to: req.body.params.email, 
+        subject: 'Confirm OTP For Stuc', 
+        text: 'One time OTP is ' + req.body.params.otp
+    }; 
+        console.log('sending email..');
+        console.log( req.body.params.otp);
         mailTransporter.sendMail(mailDetails, function(err, data) { 
             if(err) { 
                 console.log('Error Occurs'); 
@@ -120,12 +123,8 @@ router.get('/sendmail', async (req, res) => {
 
 
 router.post('/updatecoupon', async (req, res) => {
-    console.log(req.body.params.id);
-    console.log("step 3");
-    console.log('update coupon code');
     try{
-         
-        const user = await User.updateIne({_id:req.body.params.id},{$set:{coupon:123456}},(err,doc)=>{
+        const user = await User.updateOne({_id:req.body.params.id},{$set:{coupon:req.body.params.otp,status:'Active'}},(err,doc)=>{
             if(!err){
                 console.log(doc);
                 res.json('saved to DB');

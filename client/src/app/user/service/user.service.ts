@@ -39,11 +39,21 @@ export class UserService {
     )
   }
 
-  couponcode(idd){
-    let data = {id: idd};
+  couponcode(idd,em){
+    var otp = Math.floor(100000 + Math.random() * 900000);
+    console.log(otp);
+    let data = {id: idd,otp:otp};
+    let emaildata = {email: em,otp:otp};
     console.log("step 2");
     return this.http.post<any>(`${this.ROOT_URL}/updatecoupon`,{params: data}).subscribe(
       res =>{
+        this.http.post<any>(`${this.ROOT_URL}/sendmail`,{params: emaildata}).subscribe(
+          res =>{
+            console.log("mail send");
+          },err =>{
+            console.log(err);
+          }
+        )
       },err =>{
         console.log(err);
       }

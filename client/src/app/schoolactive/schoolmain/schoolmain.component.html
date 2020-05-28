@@ -1,0 +1,83 @@
+<div class="wrapper">
+    <div class="top_navbar">
+      <div class="hamburger">
+         <div class="hamburger__inner">
+           <div class="one"></div>
+           <div class="two"></div>
+           <div class="three"></div>
+         </div>
+      </div>
+      <div class="menu">
+        <div class="logo">
+          Stuc 
+        </div>
+        <div class="right_menu">
+          <ul>
+            <li><i class="fa fa-sign-out fa-2x" style="color: white; cursor: pointer;" (click)="userService.logout()"></i>
+              <div class="profile_dd">
+                 <div class="dd_item">Profile</div>
+                 <div class="dd_item">Change Password</div>
+                 <div class="dd_item">Logout</div>
+                 
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+      
+    <div class="main_container">
+        <div class="sidebar">
+            <div class="sidebar__inner">
+              <div class="profile">
+                <div class="img">
+                  <img src="https://i.imgur.com/Ctwf8HA.png" alt="profile_pic">
+                </div>
+                <div class="profile_info">
+                   <p>Welcome</p>
+                   <p class="profile_name">Kunal Sharma</p>
+                </div>
+              </div>
+              <ul>
+                <li>
+                  <a href="#" class="active">
+                    <span class="icon"><i class="fa fa-home" aria-hidden="true"></i></span>
+                    <span class="title">Dashboard</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <span class="icon"><i class="fa fa-book" aria-hidden="true"></i></span>
+                    <span class="title">Teachers</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <span class="icon"><i class="fa fa-graduation-cap" aria-hidden="true"></i></span>
+                    <span class="title">Students</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <span class="icon"><i class="fa fa-pie-chart"></i></span>
+                    <span class="title">Teachers Stats</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <span class="icon"><i class="fa fa-bar-chart"></i></span>
+                    <span class="title">Students Graph</span>
+                  </a>
+                </li>
+                <li style="text-align: center;">
+                  <img src="../../../assets//img/stuc.png" class="img-responsive" height="80px">
+                </li>
+              </ul>
+            </div>
+        </div>
+        <div class="container">
+         Activated User
+        </div>
+    </div>
+    
+  </div>

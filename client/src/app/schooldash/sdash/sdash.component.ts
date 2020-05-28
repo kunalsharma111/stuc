@@ -23,8 +23,10 @@ export class SdashComponent implements OnInit {
     // this.userService.sendmail();
     console.log("step 1");
     this.userService.checktype().subscribe(res =>{
-      const idd = JSON.stringify(res._id);
-      this.userService.couponcode(idd);
+      var idd = JSON.stringify(res._id);
+      var em = JSON.stringify(res.email);
+      var iddd = JSON.parse(idd);
+      this.userService.couponcode(iddd,em);
     },err=>{
       console.log(err);
     })
