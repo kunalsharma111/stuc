@@ -8,6 +8,7 @@ import { UserService } from 'src/app/user/service/user.service';
 })
 export class SdashComponent implements OnInit {
   new : boolean = true;
+  code : string;
   constructor(  public userService: UserService) { }
 
   ngOnInit(): void {
@@ -17,6 +18,7 @@ export class SdashComponent implements OnInit {
       })
       
     });
+    
   }
 
   buyp1(){
@@ -32,4 +34,13 @@ export class SdashComponent implements OnInit {
     })
   }
 
+  activateuser(){
+    this.userService.checktype().subscribe(res =>{
+      var idd = JSON.stringify(res._id);
+      var iddd = JSON.parse(idd);
+      this.userService.comparecoupon(iddd,this.code);
+    },err=>{
+      console.log(err);
+    })
+  }
 }

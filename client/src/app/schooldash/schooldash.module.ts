@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { FormsModule } from '@angular/forms';
 import { SchooldashRoutingModule } from './schooldash-routing.module';
 import { SdashComponent } from './sdash/sdash.component';
 
@@ -9,7 +9,8 @@ import { SdashComponent } from './sdash/sdash.component';
   declarations: [SdashComponent],
   imports: [
     CommonModule,
-    SchooldashRoutingModule
+    SchooldashRoutingModule,
+    FormsModule
   ]
 })
 export class SchooldashModule { }

@@ -124,7 +124,7 @@ router.post('/sendmail', async (req, res) => {
 
 router.post('/updatecoupon', async (req, res) => {
     try{
-        const user = await User.updateOne({_id:req.body.params.id},{$set:{coupon:req.body.params.otp,status:'Active'}},(err,doc)=>{
+        const user = await User.updateOne({_id:req.body.params.id},{$set:{coupon:req.body.params.otp}},(err,doc)=>{
             if(!err){
                 console.log(doc);
                 res.json('saved to DB');
@@ -135,6 +135,24 @@ router.post('/updatecoupon', async (req, res) => {
     } 
 });
 
+router.post('/activateuser',async(req,res)=>{
+    try{
+        const user = await User.findById(req.body.params.id);
+        if(user.coupon == req.body.params.coupon){
+            const user = await User.updateOne({_id:req.body.params.id},{$set:{status:'Active'}},(err,doc)=>{
+                if(!err){
+                    console.log(doc);
+                    res.json('saved to DB');
+                }
+            });
+        }
+        else{
+
+        }
+    }catch(error){
+        res.json({message:error});
+    }
+})
 
 
 module.exports = router;

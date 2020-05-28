@@ -77,7 +77,20 @@
             </ul>
           </div>
       </div>
-      <div class="container">
+      
+      
+      <div class="containerr">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6 cbox">
+              <label class="mb-2">Enter Your Coupon code</label><br>
+              <input type="text"  class="inputbox" [(ngModel)]="code"><br>
+              <button class="btn mt-3 mb-1" (click)="activateuser()"><span>Activate Account</span></button>
+              <label class="labeltext">Dont have coupon code ? Get it below !</label>
+            </div>
+          </div>
+        </div>
         <div class="pricingTable" *ngIf="new">
           <h2 class="pricingTable-title">Find a plan that's right for you.</h2>
           <h3 class="pricingTable-subtitle">Try First then Buy with our free plan</h3>
@@ -114,6 +127,7 @@
             </li>
           </ul>
         </div>
+
       </div>
   </div>
   

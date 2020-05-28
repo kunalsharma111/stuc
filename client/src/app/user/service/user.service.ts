@@ -60,4 +60,16 @@ export class UserService {
     )
   }
 
+  comparecoupon(idd,coupon){
+    let data = {id: idd,coupon:coupon};
+    return this.http.post<any>(`${this.ROOT_URL}/activateuser`,{params: data}).subscribe(
+      res =>{
+        this.router.navigate(["/"]);
+        this.logout();
+      },err =>{
+        console.log(err);
+      }
+    )
+  }
+
 }
