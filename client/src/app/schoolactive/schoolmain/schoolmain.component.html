@@ -35,24 +35,25 @@
                 </div>
                 <div class="profile_info">
                    <p>Welcome</p>
-                   <p class="profile_name">Kunal Sharma</p>
+                   <p class="profile_name">{{name}}</p>
+                   <p>{{role}}</p>
                 </div>
               </div>
               <ul>
                 <li>
-                  <a href="#" class="active">
+                  <a [routerLink]="['/activeschool']" class="active">
                     <span class="icon"><i class="fa fa-home" aria-hidden="true"></i></span>
                     <span class="title">Dashboard</span>
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a [routerLink]="['/activeschool/teachers']">
                     <span class="icon"><i class="fa fa-book" aria-hidden="true"></i></span>
                     <span class="title">Teachers</span>
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a [routerLink]="['/activeschool/students']">
                     <span class="icon"><i class="fa fa-graduation-cap" aria-hidden="true"></i></span>
                     <span class="title">Students</span>
                   </a>

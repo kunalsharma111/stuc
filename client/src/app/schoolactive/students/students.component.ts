@@ -1,19 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import * as $ from 'jquery';
-import { ListofusersService } from '../service/listofusers.service';
 import { UserService } from 'src/app/user/service/user.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { Listofusers } from '../model/listofusers';
+import { SchoolService } from '../service/school.service';
 @Component({
-  selector: 'app-adminlist',
-  templateUrl: './adminlist.component.html',
-  styleUrls: ['./adminlist.component.scss']
+  selector: 'app-students',
+  templateUrl: './students.component.html',
+  styleUrls: ['./students.component.scss']
 })
-export class AdminlistComponent implements OnInit {
+export class StudentsComponent implements OnInit {
   name;
   role;
+  schoolname;
   todaysdate = new Date();
   registerForm = new FormGroup({
     name: new FormControl("",[Validators.required]),
@@ -22,23 +21,11 @@ export class AdminlistComponent implements OnInit {
     phone: new FormControl("",[Validators.required]),
     password: new FormControl("",[Validators.required]),
     registerdate: new FormControl(this.todaysdate),
-    type: new FormControl("Admin"),
-    status: new FormControl("Active")
+    type: new FormControl("Student"),
+    status: new FormControl("Active"),
+    schoolname: new FormControl("",[Validators.required])
   })
-  s:boolean=false;
-  s2:boolean=false; 
-  tog(){
-    if(this.s==false){
-      this.s =  true;
-    }
-    else{
-      this.s = false;
-    }
-  }
-
-  list$ : Observable<Listofusers[]>;
-
-  constructor(private listofusersService : ListofusersService, private router : Router, public userService: UserService) { }
+  constructor(public userService: UserService ,public schoolService : SchoolService) { }
 
   ngOnInit(): void {
      // user details
@@ -47,20 +34,21 @@ export class AdminlistComponent implements OnInit {
       var r = JSON.stringify(res.type);
       this.name = JSON.parse(n);
       this.role = JSON.parse(r);
+      this.schoolname = this.name;
     },err=>{
       console.log(err);
     })
     // navbar toggle
-    this.list$ = this.listofusersService.getUsers();
     $(document).ready(function() {
       $(".hamburger .hamburger__inner").click(function(){
         $(".wrapper").toggleClass("active")
       })
+      
     });
   }
   userRegister(){
     if(this.registerForm.valid){
-      this.userService.register(this.registerForm.value).subscribe(res => {
+      this.schoolService.register(this.registerForm.value).subscribe(res => {
         console.log(this.registerForm.value);
         this.registerForm.reset();
       });

@@ -77,7 +77,11 @@
 .top_navbar .menu .right_menu ul{
   display: flex;
 }
-
+.dis{
+  pointer-events:none;
+  opacity: 0.6;
+  cursor: pointer;
+}
 .top_navbar .menu .right_menu ul li{
   position: relative;
 }

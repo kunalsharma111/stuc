@@ -1,11 +1,12 @@
 const router = require("express").Router();
 const User = require("../model/User");
+const Usertype = require("../model/Usertype");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const verify = require("../routes/verifyToken");
 var nodemailer = require("nodemailer");
 
-//register 
+//register admin and schools
 router.post("/register", async  (req,res) => {
     // checking user id in DB
     const emailExists = await User.findOne({
@@ -31,6 +32,38 @@ router.post("/register", async  (req,res) => {
     });
     try{
         const savedUser = await  user.save();
+        res.send(savedUser);
+    }catch(error){
+        res.status(400).send(error);
+    }
+});
+
+//register schools and teachers 
+router.post("/registerst", async  (req,res) => {
+    // checking user id in DB
+    const emailExists = await Usertype.findOne({
+        email: req.body.email
+    })
+    if(emailExists) return res.status(400).send("Email already exists");
+    
+    // hash password
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(req.body.password,salt);
+    
+    // create new user
+    const usertype = new Usertype({
+        name: req.body.name,
+        email: req.body.email,
+        dob: req.body.dob,
+        phone: req.body.phone,
+        password: hashedPassword,
+        registerdate : req.body.registerdate,
+        type: req.body.type,
+        status: req.body.status,
+        schoolname : req.body.schoolname
+    });
+    try{
+        const savedUser = await  usertype.save();
         res.send(savedUser);
     }catch(error){
         res.status(400).send(error);
