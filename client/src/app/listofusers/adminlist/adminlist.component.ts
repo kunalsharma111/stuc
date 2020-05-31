@@ -36,7 +36,7 @@ export class AdminlistComponent implements OnInit {
     }
   }
 
-  list$ : Observable<Listofusers[]>;
+  list$ : Observable<Listofusers[]>; 
 
   constructor(private listofusersService : ListofusersService, private router : Router, public userService: UserService) { }
 

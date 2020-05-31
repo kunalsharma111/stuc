@@ -4,6 +4,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { SchoolService } from '../service/school.service';
+import { List } from '../model/list';
 @Component({
   selector: 'app-teachers',
   templateUrl: './teachers.component.html',
@@ -25,9 +26,11 @@ export class TeachersComponent implements OnInit {
     status: new FormControl("Active"),
     schoolname: new FormControl("")
   })
+  list$ : Observable<List[]>; 
   constructor(public userService: UserService ,public schoolService : SchoolService) { }
 
   ngOnInit(): void {
+    this.list$ = this.schoolService.getUsers();
      // user details
      this.userService.checktype().subscribe(res =>{
       var n = JSON.stringify(res.name);

@@ -77,6 +77,22 @@
             </div>
         </div>
         <div class="container">
+          <div   *ngIf="list$ | async as list">
+            <table class="rwd-table">
+                <tr>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>User Type</th>
+                  <th>Edit</th>
+                </tr>
+                <tr *ngFor="let listt of list">
+                  <td *ngIf="listt.type == 'Teacher'">{{listt.name}}</td>
+                  <td *ngIf="listt.type == 'Teacher'">{{listt.email}}</td>
+                  <td *ngIf="listt.type == 'Teacher'">{{listt.type}}</td>
+                  <td *ngIf="listt.type == 'Teacher'"><a [routerLink]="listt._id">view detail</a></td>
+                </tr>
+              </table>
+              </div>
          teacher
          <form class="form" [formGroup]="registerForm" (ngSubmit)="userRegister()">
           <input  type="text" placeholder="Enter Your Name" formControlName="name" />

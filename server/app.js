@@ -10,6 +10,7 @@ var url = process.env.DB_CONNECT;
 
 // import routes
 const userRoutes = require("./routes/user");
+const schoolRoutes =  require("./routes/school");
 
 // Middlewares
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -18,6 +19,7 @@ app.use(cors());
 
 // route middleware
 app.use("/api/user",userRoutes);
+app.use("/api/school",schoolRoutes);
 
 // connect to db
 mongoose.connect(url,{ useNewUrlParser: true , useUnifiedTopology:true}, function(err,db) 
@@ -29,27 +31,3 @@ mongoose.connect(url,{ useNewUrlParser: true , useUnifiedTopology:true}, functio
 app.listen(4000, () => console.log("server up and running on port 4000"));
 
 
-let transport = nodemailer.createTransport({
-     service: 'gmail',
-     auth: {
-        user: 'famemedia315@gmail.com',
-        pass: 'famemedia123@'
-     }
- });
- let mailDetails = { 
-     from: 'famemedia315@gmail.com', 
-     to: 'sharmakunal315@gmail.com', 
-     subject: 'Test mail', 
-     text: 'Node.js testing mail for GeeksforGeeks'
- }; 
- //send mail
- app.get('/sendmail', (req, res) => {
-     mailTransporter.sendMail(mailDetails, function(err, data) { 
-          if(err) { 
-              console.log('Error Occurs'); 
-          } else { 
-              console.log('Email sent successfully'); 
-          } 
-      }); 
- });
- 
