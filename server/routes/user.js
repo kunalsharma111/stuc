@@ -133,7 +133,7 @@ router.post('/sendmail', async (req, res) => {
         service: 'gmail', 
         auth: { 
             user: 'famemedia315@gmail.com', 
-            pass: 'famemedia123@'
+            pass: ''
         } 
     }); 
       
