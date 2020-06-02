@@ -30,7 +30,6 @@ export class StudentsComponent implements OnInit {
   constructor(public userService: UserService ,public schoolService : SchoolService) { }
 
   ngOnInit(): void {
-    this.list$ = this.schoolService.getUsers();
      // user details
      this.userService.checktype().subscribe(res =>{
       var n = JSON.stringify(res.name);
@@ -38,6 +37,7 @@ export class StudentsComponent implements OnInit {
       this.name = JSON.parse(n);
       this.role = JSON.parse(r);
       this.schoolname = this.name;
+      this.list$ = this.schoolService.getUsers(this.schoolname);
     },err=>{
       console.log(err);
     })

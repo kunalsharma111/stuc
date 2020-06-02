@@ -31,8 +31,8 @@ export class SchoolService {
   checktype(){
     return this.http.get<any>(`${this.ROOT_URL}/cur`);
   }
-  getUsers(): Observable <List[]>{
-    return this.http.get<List[]>(`${this.ROOT_URLL}/getusers`,this.httpOptions);
+  getUsers(sn): Observable <List[]>{
+    return this.http.get<List[]>(`${this.ROOT_URLL}/getusers/${sn}`,this.httpOptions);
   }
 
   getUser(id: string){
