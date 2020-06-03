@@ -16,7 +16,7 @@ export class SchoolService {
   };
   constructor(private http:HttpClient , private router : Router) { }
   register(user){
-    return this.http.post<any>(`${this.ROOT_URL}/registerst`,user);
+    return this.http.post<any>(`${this.ROOT_URL}/registerst`,user,this.httpOptions);
   }
   logout(){
     localStorage.removeItem("token");
@@ -29,7 +29,7 @@ export class SchoolService {
   }
 
   checktype(){
-    return this.http.get<any>(`${this.ROOT_URL}/cur`);
+    return this.http.get<any>(`${this.ROOT_URL}/cur`,this.httpOptions);
   }
   getUsers(sn): Observable <List[]>{
     return this.http.get<List[]>(`${this.ROOT_URLL}/getusers/${sn}`,this.httpOptions);

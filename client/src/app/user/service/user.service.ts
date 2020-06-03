@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient , HttpHeaders} from '@angular/common/http';
 import { Router } from '@angular/router';
 
 
@@ -8,7 +8,13 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class UserService {
+  
   private ROOT_URL = "http://localhost:4000/api/user";
+  private httpOptions = {
+    headers: new HttpHeaders()
+    .set("Content-Type","application/json")
+    .set("auth-token",localStorage.getItem("token"))
+  };
   constructor(private http:HttpClient , private router : Router) { }
 
   register(user){
@@ -30,10 +36,10 @@ export class UserService {
   }
 
   checktype(){
-    return this.http.get<any>(`${this.ROOT_URL}/cur`);
+    return this.http.get<any>(`${this.ROOT_URL}/cur`,this.httpOptions);
   }
   sendmail(){
-    return this.http.get<any>(`${this.ROOT_URL}/sendmail`).subscribe(
+    return this.http.get<any>(`${this.ROOT_URL}/sendmail`,this.httpOptions).subscribe(
       res =>{
       },err =>{
         console.log(err);

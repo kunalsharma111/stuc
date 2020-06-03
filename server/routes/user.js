@@ -39,7 +39,7 @@ router.post("/register", async  (req,res) => {
 });
 
 //register schools and teachers 
-router.post("/registerst", async  (req,res) => {
+router.post("/registerst",verify, async  (req,res) => {
     // checking user id in DB
     const emailExists = await Usertype.findOne({
         email: req.body.email
@@ -111,8 +111,18 @@ router.get("/getusers/:userId",verify, async (req, res) => {
     }
   });
 
+  router.get("/getusers/schools/:userId",verify, async (req, res) => {
+    try {
+      const user = await User.findById(req.params.userId);
+      const sp = await Usertype.find({"schoolname":user.name});
+      res.json(sp);
+    } catch (error) {
+      res.json({ message: error });
+    }
+  });
+
 //   get current user
-  router.get('/cur',async  (req, res) => {
+  router.get('/cur',verify ,async  (req, res) => {
    try{
     const user = await User.findOne(sub);
     res.json(user);
@@ -127,7 +137,7 @@ router.get("/getusers/:userId",verify, async (req, res) => {
 
 
 //send mail
-router.post('/sendmail', async (req, res) => {
+router.post('/sendmail',verify, async (req, res) => {
     console.log(req.body.params.email);
     let mailTransporter = nodemailer.createTransport({ 
         service: 'gmail', 

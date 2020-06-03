@@ -89,6 +89,12 @@
                 <p>{{listofusers.status}}</p>
                 <h1>{{listofusers.coupon}}</h1>
             </div>
+            <div>
+              <div *ngFor="let obj of li">
+                {{obj.name}}
+                {{obj.type}}
+              </div>
+            </div>
      
          
         </div>

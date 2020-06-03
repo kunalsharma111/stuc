@@ -23,5 +23,8 @@ export class ListofusersService {
   getUser(id: string){
     return this.http.get<Listofusers>(`${this.ROOT_URL}/${id}`,this.httpOptions);
   }
+  getteacherstudent(id:string){
+    return this.http.get<Listofusers>(`${this.ROOT_URL}/schools/${id}`,this.httpOptions);
+  }
 
 }

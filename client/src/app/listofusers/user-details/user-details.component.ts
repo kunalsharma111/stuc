@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Listofusers } from '../model/listofusers';
 import { Subscription } from 'rxjs';
 import { UserService } from 'src/app/user/service/user.service';
+import { Observable } from 'rxjs';
 import * as $ from 'jquery';
 @Component({
   selector: 'app-user-details',
@@ -15,9 +16,10 @@ export class UserDetailsComponent implements OnInit, OnDestroy {
   role;
   id: string;
   listofusers: Listofusers;
+  li : Listofusers;
 
   userSub$ : Subscription; 
-  
+  list$ : Subscription; 
   constructor(private  listofusersservice: ListofusersService, private router : ActivatedRoute, public userService: UserService) { }
 
   ngOnInit(): void {
@@ -30,13 +32,17 @@ export class UserDetailsComponent implements OnInit, OnDestroy {
     },err=>{
       console.log(err);
     })
-    // navbar toggle
+   
     this.id = this.router.snapshot.paramMap.get("id");
     this.userSub$ = this.listofusersservice
     .getUser(this.id)
     .subscribe(listofusers =>{
       this.listofusers = listofusers;
     });
+    this.list$ = this.listofusersservice.getteacherstudent(this.id).subscribe(li =>{
+      this.li = li;
+    });
+     // navbar toggle
     $(document).ready(function() {
       $(".hamburger .hamburger__inner").click(function(){
         $(".wrapper").toggleClass("active")

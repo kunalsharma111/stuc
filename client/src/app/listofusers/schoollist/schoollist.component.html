@@ -90,11 +90,11 @@
                 <th>Edit</th>
               </tr>
               <tr *ngFor="let listt of list">
-                <td *ngIf="listt.type == 'School'">{{listt.name}}</td>
-                <td *ngIf="listt.type == 'School'">{{listt.email}}</td>
-                <td *ngIf="listt.type == 'School'">{{listt.type}}</td>
-                <td *ngIf="listt.type == 'School'">{{list.status}} </td>
-                <td *ngIf="listt.type == 'School'"><a [routerLink]="listt._id">view detail</a></td>
+                <td *ngIf="listt.type == 'School' || listt.type == 'User'">{{listt.name}}</td>
+                <td *ngIf="listt.type == 'School'|| listt.type == 'User'">{{listt.email}}</td>
+                <td *ngIf="listt.type == 'School'|| listt.type == 'User'">{{listt.type}}</td>
+                <td *ngIf="listt.type == 'School'|| listt.type == 'User'">{{list.status}} </td>
+                <td *ngIf="listt.type == 'School'|| listt.type == 'User'"><a [routerLink]="listt._id">view detail</a></td>
               </tr>
             </table>
             </div>
